@@ -44,3 +44,8 @@ There are a couple of extra steps you'll need to follow to set up SPI communicat
 8. Check for a functioning CAN0 network by running `ip -s -d link show can0`. A working and correctly set up CAN0 network will show bitrate 1000000 and qlen 128
 9. Continue to flash your CAN toolhead boards as per Esoterical's guide
 
+## MAX31865, RGB, I2C, UART
+
+To enable these functions, your Raspberry Pi must first be set up as an MCU to be recognised by Klipper. To do this, follow the official [Klipper RPi Microcontroller](https://www.klipper3d.org/RPi_microcontroller.html) documentation.
+
+Once this has been set up, please see the sample canary.cfg for details on how to correctly set up these functions with pin mappings.
