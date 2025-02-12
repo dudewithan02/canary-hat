@@ -1,10 +1,11 @@
 # Canary v1.0
 Canary is a Raspberry Pi HAT that adds a CAN interface over SPI. The full feature list is below:
 - CAN network over SPI using MCP2518FD CAN FD controller
-- 24V input with 5V 5A output
+- 24V input with 5V 5A output and polarity protection
 - RGB interface with 74LVC1G17 buffer
 - UART breakout
 - I2C header
+- MAX31865 header for PT100/PT1000, with DIP switch selector for 2/3/4-wire configurations
 - 2x CAN outputs (single CAN network) with removeable 120ohm termination resistor jumper for use in both terminal and pass-through modes
 - 5V indicator LED
 - Full physical access to all 40 GPIO pins (except those used for above functions)
