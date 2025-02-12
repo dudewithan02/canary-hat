@@ -10,10 +10,10 @@ Canary is a Raspberry Pi HAT that adds a CAN interface over SPI. The full featur
 - 5V indicator LED
 - Full physical access to all 40 GPIO pins (except those used for above functions)
 
+![Canary-hat](Images/canary_hat.png)
+
 ## A note about CAN FD
 CAN FD is not currently supported by Klipper, and while Canary uses a CAN FD controller, it will revert to CAN 2.0 in the absence of CAN FD. At the time of writing this (Feb 2025) Klipper only supports CAN 2.0, however if Klipper ever integrates CAN FD into its code, Canary will be hardware-ready.
-
-![Canary-hat](Images/canary_hat.png)
 
 ## Fitting and assembly
 It's easy! Place 4 17mm standoffs on your Raspberry Pi, then fit Canary on top, making sure to carefully align the GPIO pins
