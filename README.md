@@ -32,7 +32,7 @@ There are a couple of extra steps you'll need to follow to set up SPI communicat
 ### Enable SPI and set up the MCP2518FD dtoverlay
 1. SSH into your Pi and run `sudo nano /boot/firmware/config.txt'
 2. Uncomment `dtparam=spi=on`
-3. Scroll to the bottom and add the line `dtoverlay=mcp251xfd,spi0-0,oscillator=40000000,interrupt=25
+3. Scroll to the bottom and add the line `dtoverlay=mcp251xfd,spi0-0,oscillator=40000000,interrupt=25`
 4. Save and exit
 5. Reboot your Raspberry Pi
 6. Run `dmesg | grep -i '\(can\|spi\)'` and look for an entry that relates to CAN0 with MCP2518FD being successfully initialized. It will look like the following:
