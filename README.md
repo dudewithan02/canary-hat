@@ -44,8 +44,112 @@ There are a couple of extra steps you'll need to follow to set up SPI communicat
 8. Check for a functioning CAN0 network by running `ip -s -d link show can0`. A working and correctly set up CAN0 network will show bitrate 1000000 and qlen 128
 9. Continue to flash your CAN toolhead boards as per Esoterical's guide
 
+
+
 ## MAX31865, RGB, I2C, UART
 
 To enable these functions, your Raspberry Pi must first be set up as an MCU to be recognised by Klipper. To do this, follow the official [Klipper RPi Microcontroller](https://www.klipper3d.org/RPi_microcontroller.html) documentation.
 
 Once this has been set up, please see the sample canary.cfg for details on how to correctly set up these functions with pin mappings.
+
+## UART KATAPULT INSTRUCTIONS
+Before beginning, you need to edit a couple of files on your Raspberry Pi:
+
+```
+sudo nano /boot/firmware/cmdline.txt
+```
+Remove `console=serial0,115200` and save & close.
+
+```
+sudo nano /boot/firmware/config.txt
+```
+
+Add `dtoverlay=pi3-miniuart-bt` to the end of the file. Save and close.
+
+In your printer.cfg, add the following `[mcu]` section:
+```
+[mcu]
+serial: /dev/ttyAMA0
+restart_method:command
+```
+
+Now you are ready to begin flashing Katapult and Klipper
+
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install python3 python3-serial
+```
+
+```
+test -e ~/katapult && (cd ~/katapult && git pull) || (cd ~ && git clone https://github.com/Arksine/katapult) ; cd ~
+```
+
+```
+cd ~/katapult
+make menuconfig
+```
+
+![alt text](image.png)
+
+```
+make clean
+make
+```
+
+```
+lsusb
+```
+
+```
+cd ~/katapult
+make flash FLASH_DEVICE=2e8a:0003
+```
+
+![alt-text](image-1.png)
+
+```
+cd ~/klipper
+```
+
+```
+make menuconfig
+
+```
+
+![alt text](image-2.png)
+
+```
+make clean
+make
+```
+
+```
+sudo service klipper stop
+```
+
+```
+python3 ~/katapult/scripts/flashtool.py -f ~/klipper/out/klipper.bin -d /dev/serial/by-id/usb-katapult_your_board_id
+```
+
+Use this one below:
+```
+python3 ~/katapult/scripts/flash_can.py -f ~/klipper/out/klipper.bin -d  /dev/ttyAMA0
+```
+
+Reboot.
+
+To flash Klipper again, enter DFU mode by holding the BOOT button while pressing RST, then enter the following after making the new Klipper file:
+
+```
+python3 ~/katapult/scripts/flash_can.py -f ~/klipper/out/klipper.bin -d  /dev/ttyAMA0
+```
+
+
+#### CREDITS
+
+Polar Ted [CAN UART GUIDE](https://github.com/Polar-Ted/RP2040Canboot_Install/tree/main?tab=readme-ov-file)
+
+BTT SKR PICO [UART guide](https://github.com/bigtreetech/SKR-Pico/tree/master/Klipper)
+
+Esoterical [CANBUS Guide](https://canbus.esoterical.online/mainboard_flashing#rp2040-based-boards)
