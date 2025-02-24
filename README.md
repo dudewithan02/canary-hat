@@ -30,7 +30,7 @@ For flashing and installation of CAN devices, I highly recommend you read [Esote
 There are a couple of extra steps you'll need to follow to set up SPI communication with Canary. For this I will assume you have a working Klipper installation on your Raspberry Pi and you have SSH access.
 
 ### Enable SPI and set up the MCP2518FD dtoverlay
-1. SSH into your Pi and run `sudo nano /boot/firmware/config.txt'
+1. SSH into your Pi and run `sudo nano /boot/firmware/config.txt`
 2. Uncomment `dtparam=spi=on`
 3. Scroll to the bottom and add the line `dtoverlay=mcp251xfd,spi0-0,oscillator=40000000,interrupt=25`
 4. Save and exit
