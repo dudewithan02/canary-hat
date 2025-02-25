@@ -38,6 +38,7 @@ There are a couple of extra steps you'll need to follow to set up SPI communicat
 6. Run `dmesg | grep -i '\(can\|spi\)'` and look for an entry that relates to CAN0 with MCP2518FD being successfully initialized. It will look like the following:
 `mcp251xfd spi0.0 can0: MCP2518FD rev0.0 (-RX_INT -PLL -MAB_NO_WARN +CRC_REG +CRC_RX +CRC_TX +ECC -HD o:40.00MHz c:40.00MHz m:20.00MHz rs:17.00MHz es:16.66MHz rf:17.00MHz ef:16.66MHz) successfully initialized.`
 7. [Disable Wifi Power Management](https://github.com/AllskyTeam/allsky/discussions/4191)
+
    `nmcli connection`
    `nmcli c modify preconfigured 802-11-wireless.powersave 2`
 8. Go to Esoterical's CANBUS Guide [Getting Started](https://canbus.esoterical.online/Getting_Started.html) and follow the setup guide for TX queue length, initializing the CAN network etc.
