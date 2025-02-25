@@ -160,13 +160,13 @@ make clean
 make
 ```
 
-To enter DFU mode, run the following:
+To enter bootloader mode, run the following:
 ```
 python3 ~/katapult/scripts/flash_can.py -r -d /dev/ttyAMA0
 ```
 You should see the following:
 
-![DFU Mode Successful](Images/dfu_mode.png)
+![Bootloader Successful](Images/bootloader.png)
 
 Now finally to flash Klipper to the RP2040, run:
 ```
