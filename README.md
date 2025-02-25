@@ -138,7 +138,7 @@ sudo service klipper stop
 ```
 
 ```
-python3 ~/katapult/scripts/flash_can.py -f ~/klipper/out/klipper.bin -d  /dev/ttyAMA0
+python3 ~/katapult/scripts/flash_can.py -f ~/klipper/out/klipper.bin -d /dev/ttyAMA0
 ```
 
 Reboot.
@@ -162,7 +162,7 @@ make
 
 To enter DFU mode, run the following:
 ```
-python3 ~/katapult/scripts/flash_can.py -r -d  /dev/ttyAMA0
+python3 ~/katapult/scripts/flash_can.py -r -d /dev/ttyAMA0
 ```
 You should see the following:
 
@@ -170,7 +170,7 @@ You should see the following:
 
 Now finally to flash Klipper to the RP2040, run:
 ```
-python3 ~/katapult/scripts/flash_can.py -f ~/klipper/out/klipper.bin -d  /dev/ttyAMA0
+python3 ~/katapult/scripts/flash_can.py -f ~/klipper/out/klipper.bin -d /dev/ttyAMA0
 ```
 You should see the following:
 ![Klipper Update Success](Images/klipper_update.png)
