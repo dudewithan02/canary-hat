@@ -159,6 +159,11 @@ Then:
 make clean
 make
 ```
+Stop Klipper running before loading bootloader mode:
+
+```
+sudo service klipper stop
+```
 
 To enter bootloader mode, run the following:
 ```
@@ -174,6 +179,12 @@ python3 ~/katapult/scripts/flash_can.py -f ~/klipper/out/klipper.bin -d /dev/tty
 ```
 You should see the following:
 ![Klipper Update Success](Images/klipper_update.png)
+
+Restart Klipper with the following:
+
+```
+sudo service klipper start
+```
 
 
 #### CREDITS
