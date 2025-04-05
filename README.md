@@ -108,6 +108,7 @@ make
 ```
 lsusb
 ```
+![lsusb result](Images/lsusb.png)
 
 ```
 cd ~/katapult
@@ -134,6 +135,10 @@ sudo service klipper stop
 
 ```
 python3 ~/katapult/scripts/flash_can.py -f ~/klipper/out/klipper.bin -d /dev/ttyAMA0
+```
+
+```
+sudo service klipper start
 ```
 
 Reboot.
