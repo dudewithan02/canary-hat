@@ -41,13 +41,8 @@ There are a couple of extra steps you'll need to follow to set up SPI communicat
 
    ![MCP2518FD Initialized](Images/mcp2518fd_initialized.png)
 
-7. Optional: [Disable Wifi Power Management](https://github.com/AllskyTeam/allsky/discussions/4191)
 
-   Run `nmcli connection` and take note of the name of the network. In my case it's 'preconfigured'.
-
-   Then run `nmcli c modify preconfigured 802-11-wireless.powersave 2` to disable WLAN powersaving.
-
-8. Go to Esoterical's CANBUS Guide [Getting Started](https://canbus.esoterical.online/Getting_Started.html) and follow the setup guide for TX queue length, initializing the CAN network etc.
+7. Go to Esoterical's CANBUS Guide [Getting Started](https://canbus.esoterical.online/Getting_Started.html) and follow the setup guide for TX queue length, initializing the CAN network etc.
 
    **Note** Esoterical's instructions change from time to time, and I'd recommend you visit that page for the most up-to-date guide.
 
@@ -59,7 +54,7 @@ There are a couple of extra steps you'll need to follow to set up SPI communicat
 
 
 
-## MAX31865, RGB, I2C, UART
+## I2C
 
 To enable these functions, your Raspberry Pi must first be set up as an MCU to be recognised by Klipper. To do this, follow the official [Klipper RPi Microcontroller](https://www.klipper3d.org/RPi_microcontroller.html) documentation.
 
@@ -79,9 +74,9 @@ sudo nano /boot/firmware/config.txt
 
 Add `dtoverlay=pi3-miniuart-bt` to the end of the file. Save and close.
 
-In your printer.cfg, add the following `[mcu]` section:
+In your printer.cfg, add the following `[mcu canary]` section:
 ```
-[mcu]
+[mcu canary]
 serial: /dev/ttyAMA0
 restart_method:command
 ```
